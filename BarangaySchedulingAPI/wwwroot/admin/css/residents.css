@@ -1,0 +1,32 @@
+/* Residents Statistics Cards */
+
+.card-stat{
+    border:none;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card-stat:hover{
+    transform:translateY(-5px);
+}
+
+.card-stat i{
+    font-size:45px;
+}
+
+/* Residents Table */
+
+.table{
+    vertical-align:middle;
+}
+
+.table th{
+    white-space:nowrap;
+}
+
+/* Hide Bootstrap Dropdown Arrow */
+
+.dropdown-toggle::after{
+    display:none;
+}

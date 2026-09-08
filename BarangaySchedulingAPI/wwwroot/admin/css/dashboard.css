@@ -1,0 +1,115 @@
+/* =========================
+   DASHBOARD STAT CARDS
+========================= */
+
+.card-stat{
+    border:none;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+    overflow:hidden;
+}
+
+.card-stat:hover{
+    transform:translateY(-6px);
+}
+
+.card-stat .card-body{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px;
+}
+
+.card-stat .info h6{
+    color:#6c757d;
+    margin-bottom:8px;
+    font-size:15px;
+}
+
+.card-stat .info h2{
+    font-size:34px;
+    font-weight:bold;
+    margin:0;
+}
+
+.card-stat .icon{
+    width:70px;
+    height:70px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    color:#fff;
+}
+
+.bg-blue{
+    background:#0d6efd;
+}
+
+.bg-green{
+    background:#198754;
+}
+
+.bg-orange{
+    background:#fd7e14;
+}
+
+.bg-cyan{
+    background:#0dcaf0;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.table td,
+.table th{
+    vertical-align:middle;
+}
+
+.empty-table{
+    padding:60px;
+    text-align:center;
+    color:#999;
+}
+.upload-box{
+
+    border:2px dashed #0d6efd;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    background:#f8fbff;
+
+}
+
+.upload-box:hover{
+
+    background:#eef6ff;
+
+    transform:scale(1.02);
+
+}
+
+#imagePreview{
+
+    border-radius:15px;
+
+    margin-top:20px;
+
+    display:none;
+
+    max-height:300px;
+
+    object-fit:cover;
+
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Barangay Santol Announcements</title>
+
+<link rel="stylesheet" href="css/announcements.css">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/theme.css">
+
+</head>
+
+
+<body class="public-page public-announcements">
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+
+<img src="images/logo.jpg"
+width="50"
+class="rounded-circle me-2"
+alt="Barangay Santol logo">
+
+<div>
+
+<b>Barangay Santol</b>
+<br>
+<small>Scheduling System</small>
+
+</div>
+
+</a>
+
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">
+Home
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="index.html#services">
+Services
+</a>
+</li>
+
+
+<li class="nav-item">
+<a class="nav-link active" href="announcements.html">
+Announcements
+</a>
+</li>
+
+
+<li class="nav-item">
+<a class="nav-link" href="schedule.html">
+Schedule
+</a>
+</li>
+
+
+<li class="nav-item">
+<a class="nav-link" href="complaints.html">
+Complaints
+</a>
+</li>
+
+
+</ul>
+
+</div>
+
+
+</div>
+
+</nav>
+
+
+
+
+<!-- HEADER -->
+
+
+<section class="announcement-header">
+
+<div class="container text-center">
+
+
+<i class="bi bi-megaphone-fill"></i>
+
+
+<h1>
+Barangay Announcements
+</h1>
+
+
+<p>
+Stay updated with the latest news, events,
+and important advisories from Barangay Santol.
+</p>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- FILTER -->
+
+
+<div class="container mt-5">
+
+
+<div class="filter-box text-center">
+
+
+<button class="filter active"
+data-filter="all">
+All
+</button>
+
+
+<button class="filter"
+data-filter="event">
+Events
+</button>
+
+
+<button class="filter"
+data-filter="health">
+Health
+</button>
+
+
+<button class="filter"
+data-filter="emergency">
+Emergency
+</button>
+
+
+<button class="filter"
+data-filter="notice">
+Notices
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<!-- ANNOUNCEMENT LIST -->
+
+<section class="container py-5">
+
+    <div class="row g-4" id="announcementList">
+
+        <div class="col-12 text-center">
+
+            <div class="spinner-border text-primary"></div>
+
+            <p class="mt-3">
+                Loading announcements...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- MODAL -->
+
+<div class="modal fade" id="readModal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Announcement Details
+                </h5>
+
+                <button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <img id="modalImage"
+                     class="img-fluid rounded mb-3"
+                     style="display:none;">
+
+                <h3 id="modalTitle"></h3>
+
+                <p>
+
+                    <strong>Date:</strong>
+
+                    <span id="modalDate"></span>
+
+                </p>
+
+                <p>
+
+                    <strong>Location:</strong>
+
+                    <span id="modalLocation"></span>
+
+                </p>
+
+                <hr>
+
+                <p id="modalDescription"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<footer>
+
+<div class="text-center">
+
+<h5>
+Barangay Santol
+</h5>
+
+<p>
+Quezon City
+</p>
+
+<p>
+© 2026 Barangay Scheduling System
+</p>
+
+
+</div>
+
+</footer>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/announcements.js"></script>
+
+
+</body>
+</html>

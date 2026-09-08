@@ -1,0 +1,265 @@
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+
+background:#f4f6f9;
+
+}
+
+.hero{
+
+padding:80px 0;
+
+background:linear-gradient(135deg,#0d6efd,#0b4db3);
+
+color:white;
+
+}
+
+.hero h1{
+
+font-size:50px;
+
+font-weight:bold;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+margin:20px 0;
+
+}
+
+.hero-logo{
+
+width:320px;
+
+border-radius:50%;
+
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+background:white;
+
+padding:10px;
+
+}
+
+.service-card{
+
+text-align:center;
+
+border:none;
+
+border-radius:15px;
+
+transition:.3s;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.service-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.service-card .card-body{
+
+padding:40px;
+
+}
+
+.how{
+
+background:white;
+
+padding:70px 0;
+
+}
+
+.how h1{
+
+font-size:60px;
+
+}
+
+footer{
+
+    margin-top:80px;
+    background:linear-gradient(90deg,#0d6efd,#4a8dff);
+    color:white;
+    padding:35px;
+    text-align:center;
+
+}
+
+.navbar-brand h5{
+
+font-weight:bold;
+
+}
+
+.btn-primary{
+
+padding:12px 30px;
+
+}
+
+.btn-warning{
+
+font-weight:bold;
+
+}
+
+.form-control,
+.form-select{
+
+    border-radius:12px;
+    padding:12px;
+    border:1px solid #d9e4f2;
+    transition:.3s;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:#0d6efd;
+    box-shadow:0 0 0 .25rem rgba(13,110,253,.15);
+
+}
+.btn-primary{
+
+    border-radius:12px;
+    padding:13px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+}
+.fc{
+
+    font-size:15px;
+
+}
+
+.fc-toolbar-title{
+
+    font-size:1.5rem;
+    font-weight:bold;
+    color:#0d6efd;
+
+}
+
+.fc-daygrid-day{
+
+    transition:.25s;
+
+}
+
+.fc-daygrid-day:hover{
+
+    background:#eef6ff;
+
+}
+
+.fc-event{
+
+    border:none;
+    border-radius:8px;
+    padding:3px;
+    font-size:12px;
+    font-weight:600;
+
+}
+
+/* ===========================
+   MODERN CALENDAR DESIGN
+=========================== */
+
+.fc-theme-standard td,
+.fc-theme-standard th{
+    border:1px solid #edf2f7;
+}
+
+.fc-scrollgrid{
+    border:none !important;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fc-daygrid-day{
+    background:white;
+    transition:.25s;
+}
+
+.fc-daygrid-day:hover{
+    background:#f4f9ff;
+}
+
+/* Calendar day number */
+.fc .fc-daygrid-day-number{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:6px;
+
+    border-radius:50%;
+
+    color:#4b5563;
+    font-weight:600;
+
+    transition:.25s;
+}
+
+/* Hover effect */
+.fc-daygrid-day:hover .fc-daygrid-day-number{
+
+    background:#e9f3ff;
+    color:#0d6efd;
+
+}
+
+/* Today's date */
+.fc .fc-day-today{
+
+    background:#f8fbff !important;
+
+}
+
+.fc .fc-day-today .fc-daygrid-day-number{
+
+    background:#0d6efd;
+    color:white;
+    box-shadow:0 5px 12px rgba(13,110,253,.25);
+
+}
+
+/* Selected day */
+.fc-daygrid-day.fc-day-selected{
+    background:#eef5ff;
+}
+
+/* Events */
+.fc-event{
+
+    border:none;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:600;
+    padding:2px 6px;
+
+}

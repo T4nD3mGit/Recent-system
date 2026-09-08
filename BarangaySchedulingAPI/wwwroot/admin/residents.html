@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="js/auth.js"></script>
+<script>
+
+if(sessionStorage.getItem("isLoggedIn") !== "true"){
+
+    window.location.replace("login.html");
+
+}
+
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Residents Management | Barangay Santol</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/residents.css">
+<link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body class="admin-page admin-residents">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="sidebar-header">
+
+        <img src="images/logo.jpg" alt="Logo">
+
+        <h4>Barangay Santol</h4>
+
+        <small>Admin Panel</small>
+
+    </div>
+
+    <div class="sidebar-menu">
+
+        <a href="dashboard.html">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="schedule-enquiries.html">
+            <i class="bi bi-calendar-check"></i>
+            Schedule Enquiries
+        </a>
+
+        <a href="calendar.html">
+            <i class="bi bi-calendar-event"></i>
+            Calendar
+        </a>
+
+        <a href="residents.html" class="active">
+            <i class="bi bi-people"></i>
+            Residents
+        </a>
+
+    </div>
+
+    <a href="#" class="logout" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+    </a>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <div class="topbar-left">
+
+        <h2>
+            <i class="bi bi-people-fill text-primary"></i>
+            Residents Management
+        </h2>
+
+        <p class="text-muted mb-0">
+            Manage Barangay Resident Records
+        </p>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#addResidentModal">
+
+            <i class="bi bi-person-plus-fill"></i>
+            Add Resident
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- DASHBOARD CARDS -->
+
+<div class="row">
+
+<div class="col-lg-3 mb-4">
+
+<div class="card card-stat p-4">
+
+<i class="bi bi-people-fill text-primary"></i>
+
+<h5 class="mt-3">
+
+Total Residents
+
+</h5>
+
+<h2 id="totalResidents">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 mb-4">
+
+<div class="card card-stat p-4">
+
+<i class="bi bi-gender-male text-info"></i>
+
+<h5 class="mt-3">
+
+Male
+
+</h5>
+
+<h2 id="maleResidents">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 mb-4">
+
+<div class="card card-stat p-4">
+
+<i class="bi bi-gender-female text-danger"></i>
+
+<h5 class="mt-3">
+
+Female
+
+</h5>
+
+<h2 id="femaleResidents">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 mb-4">
+
+<div class="card card-stat p-4">
+
+<i class="bi bi-check-circle-fill text-success"></i>
+
+<h5 class="mt-3">
+
+Active Residents
+
+</h5>
+
+<h2 id="activeResidents">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SEARCH & FILTER -->
+
+<div class="card border-0 shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <div class="row g-3">
+
+            <div class="col-lg-4">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search resident name...">
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select">
+
+                    <option selected>Gender</option>
+
+                    <option>Male</option>
+
+                    <option>Female</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select">
+
+                    <option selected>Status</option>
+
+                    <option>Active</option>
+
+                    <option>Inactive</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <select class="form-select">
+
+                    <option selected>Purok</option>
+
+                    <option>Purok 1</option>
+
+                    <option>Purok 2</option>
+
+                    <option>Purok 3</option>
+
+                    <option>Purok 4</option>
+
+                    <option>Purok 5</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <button class="btn btn-primary w-100">
+
+                    <i class="bi bi-funnel-fill"></i>
+
+                    Filter
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- RESIDENTS TABLE -->
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-header bg-white">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+
+                <i class="bi bi-people-fill text-primary"></i>
+
+                Residents List
+
+            </h4>
+
+            <span class="badge bg-primary fs-6">
+
+                Database Records
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th>Resident ID</th>
+
+                        <th>Full Name</th>
+
+                        <th>Age</th>
+
+                        <th>Gender</th>
+
+                        <th>Address</th>
+
+                        <th>Contact No.</th>
+
+                        <th>Status</th>
+
+                        <th width="80">Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <!-- READY FOR SQL SERVER -->
+
+                <tbody id="residentTable">
+
+                    <!--
+
+                    Example when backend is connected:
+
+                    foreach(var resident in residents)
+
+                    {
+
+                        output table row
+
+                    }
+
+                    -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- EMPTY STATE -->
+
+        <div class="text-center py-5">
+
+            <i class="bi bi-people display-1 text-secondary"></i>
+
+            <h4 class="mt-3 text-secondary">
+
+                No Resident Records Found
+
+            </h4>
+
+            <p class="text-muted">
+
+                Resident records from SQL Server will appear here once your backend is connected.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- PAGINATION -->
+
+<div class="d-flex justify-content-between align-items-center mt-4">
+
+    <small class="text-muted">
+
+        Showing 0 of 0 Residents
+
+    </small>
+
+    <nav>
+
+        <ul class="pagination mb-0">
+
+            <li class="page-item disabled">
+
+                <a class="page-link">
+
+                    Previous
+
+                </a>
+
+            </li>
+
+            <li class="page-item active">
+
+                <a class="page-link">
+
+                    1
+
+                </a>
+
+            </li>
+
+            <li class="page-item disabled">
+
+                <a class="page-link">
+
+                    Next
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</div>
+<!-- ========================================= -->
+<!-- ADD RESIDENT MODAL -->
+<!-- ========================================= -->
+
+<div class="modal fade" id="addResidentModal" tabindex="-1">
+
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h4 class="modal-title">
+
+                    <i class="bi bi-person-plus-fill"></i>
+
+                    Add New Resident
+
+                </h4>
+
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="residentForm">
+
+                    <div class="row">
+
+                        <!-- Resident ID -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Resident ID
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Auto Generate">
+
+                        </div>
+
+                        <!-- First Name -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter first name">
+
+                        </div>
+
+                        <!-- Middle Name -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Middle Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter middle name">
+
+                        </div>
+
+                        <!-- Last Name -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter last name">
+
+                        </div>
+
+                        <!-- Extension -->
+
+                        <div class="col-md-2 mb-3">
+
+                            <label class="form-label">
+                                Suffix
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Jr., III">
+
+                        </div>
+
+                        <!-- Gender -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Gender
+                            </label>
+
+                            <select class="form-select">
+
+                                <option selected disabled>Select</option>
+
+                                <option>Male</option>
+
+                                <option>Female</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Civil Status -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Civil Status
+                            </label>
+
+                            <select class="form-select">
+
+                                <option selected disabled>Select</option>
+
+                                <option>Single</option>
+
+                                <option>Married</option>
+
+                                <option>Widowed</option>
+
+                                <option>Separated</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Birthday -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Birth Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- Age -->
+
+                        <div class="col-md-2 mb-3">
+
+                            <label class="form-label">
+                                Age
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Age">
+
+                        </div>
+
+                        <!-- Contact -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Contact Number
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="09XXXXXXXXX">
+
+                        </div>
+
+                        <!-- Email -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                placeholder="example@email.com">
+
+                        </div>
+
+                        <!-- Occupation -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Occupation
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Occupation">
+
+                        </div>
+
+                        <!-- House No -->
+
+                        <div class="col-md-2 mb-3">
+
+                            <label class="form-label">
+                                House No.
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- Street -->
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Street
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control">
+
+                        </div>
+
+                        <!-- Purok -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Purok
+                            </label>
+
+                            <select class="form-select">
+
+                                <option selected disabled>Select</option>
+
+                                <option>Purok 1</option>
+
+                                <option>Purok 2</option>
+
+                                <option>Purok 3</option>
+
+                                <option>Purok 4</option>
+
+                                <option>Purok 5</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Status -->
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Status
+                            </label>
+
+                            <select class="form-select">
+
+                                <option selected>Active</option>
+
+                                <option>Inactive</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Complete Address -->
+
+                        <div class="col-12 mb-3">
+
+                            <label class="form-label">
+                                Complete Address
+                            </label>
+
+                            <textarea
+                                rows="3"
+                                class="form-control"
+                                placeholder="Enter complete address"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+                <button class="btn btn-primary">
+
+                    <i class="bi bi-save-fill"></i>
+
+                    Save Resident
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- VIEW RESIDENT MODAL -->
+<!-- ========================================= -->
+
+<div class="modal fade" id="viewResidentModal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h4>
+
+                    <i class="bi bi-person-vcard-fill"></i>
+
+                    Resident Information
+
+                </h4>
+
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <table class="table table-borderless">
+
+                            <tr>
+                                <th width="40%">Resident ID</th>
+                                <td id="viewResidentID">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Full Name</th>
+                                <td id="viewName">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Gender</th>
+                                <td id="viewGender">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Age</th>
+                                <td id="viewAge">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Birthday</th>
+                                <td id="viewBirthday">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Civil Status</th>
+                                <td id="viewCivilStatus">-</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <table class="table table-borderless">
+
+                            <tr>
+                                <th width="40%">Contact</th>
+                                <td id="viewContact">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Email</th>
+                                <td id="viewEmail">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Occupation</th>
+                                <td id="viewOccupation">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Address</th>
+                                <td id="viewAddress">-</td>
+                            </tr>
+
+                            <tr>
+                                <th>Status</th>
+                                <td>
+
+                                    <span class="badge bg-success">
+
+                                        Active
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- ========================================= -->
+<!-- EDIT RESIDENT MODAL -->
+<!-- ========================================= -->
+
+<div class="modal fade" id="editResidentModal" tabindex="-1">
+
+<div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+<div class="modal-content">
+
+<div class="modal-header bg-warning">
+
+<h4>
+
+<i class="bi bi-pencil-square"></i>
+
+Edit Resident
+
+</h4>
+
+<button class="btn-close"
+data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<p class="text-muted">
+
+This form is identical to the Add Resident form.
+
+Once connected to SQL Server, the selected resident's information will automatically load here for editing.
+
+</p>
+
+<div class="alert alert-info">
+
+<i class="bi bi-info-circle"></i>
+
+Backend Integration Ready
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+<button class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<button class="btn btn-warning">
+
+<i class="bi bi-save-fill"></i>
+
+Update Resident
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ========================================= -->
+<!-- DELETE RESIDENT -->
+<!-- ========================================= -->
+
+<div class="modal fade"
+id="deleteResidentModal"
+tabindex="-1">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header bg-danger text-white">
+
+<h4>
+
+<i class="bi bi-trash-fill"></i>
+
+Delete Resident
+
+</h4>
+
+<button class="btn-close btn-close-white"
+data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body text-center">
+
+<i class="bi bi-exclamation-triangle-fill
+text-danger display-3"></i>
+
+<h4 class="mt-3">
+
+Delete this resident?
+
+</h4>
+
+<p>
+
+This action cannot be undone.
+
+</p>
+
+</div>
+
+<div class="modal-footer">
+
+<button class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<button class="btn btn-danger">
+
+<i class="bi bi-trash-fill"></i>
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<footer class="card mt-5 p-4 text-center">
+
+
+    <h5 class="mb-1">
+
+        Barangay Santol Scheduling System
+
+    </h5>
+
+    <p class="mb-0">
+
+        Residents Management Module
+
+    </p>
+
+    <small>
+
+        © 2026 All Rights Reserved.
+
+    </small>
+
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/residents.js"></script>
+
+</body>
+
+</html>

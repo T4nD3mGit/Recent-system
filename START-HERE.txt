@@ -1,0 +1,15 @@
+BARANGAY SANTOL APPOINTMENT SYSTEM
+==================================
+
+1. Open Appointmentsystem.slnx in Visual Studio.
+2. Make sure BarangaySchedulingAPI is the startup project.
+3. Press Ctrl+F5 or click the green Run button.
+4. The resident website opens automatically at the project address.
+5. To access the admin login, add /admin/login.html to the address.
+
+Example:
+Resident website: http://localhost:5202/
+Admin login:      http://localhost:5202/admin/login.html
+
+The frontend and backend are now inside one ASP.NET project. A separate
+Live Server is not required.

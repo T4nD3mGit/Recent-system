@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="js/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Calendar | Barangay Santol</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/calendar.css">
+<link rel="stylesheet" href="css/theme.css">
+
+   
+</head>
+
+<body class="admin-page admin-calendar">
+
+<div class="sidebar">
+
+    <div class="sidebar-header">
+
+        <img src="images/logo.jpg" alt="Logo">
+
+        <h4>Barangay Santol</h4>
+
+        <small>Admin Panel</small>
+
+    </div>
+
+    <div class="sidebar-menu">
+
+        <a href="dashboard.html">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="schedule-enquiries.html">
+            <i class="bi bi-calendar-check"></i>
+            Schedule Enquiries
+        </a>
+
+        <a class="active" href="calendar.html">
+            <i class="bi bi-calendar-event"></i>
+            Calendar
+        </a>
+
+        <a href="residents.html">
+            <i class="bi bi-people"></i>
+            Residents
+        </a>
+
+    </div>
+
+    <a href="#" class="logout" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+    </a>
+
+</div>  
+<div class="content">
+
+    <div class="topbar">
+
+    <!-- Left Side -->
+    <div>
+
+        <h2 class="mb-1">
+            <i class="bi bi-calendar3 text-primary"></i>
+            Appointment Calendar
+        </h2>
+
+        <p class="text-muted mb-0">
+            Manage approved appointments and filed complaints.
+        </p>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="d-flex align-items-center gap-2">
+
+        <button class="btn btn-outline-primary"
+                onclick="previousMonth()">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <button class="btn btn-primary px-4"
+                id="monthTitle">
+            Loading...
+        </button>
+
+        <button class="btn btn-outline-primary"
+                onclick="nextMonth()">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+        <button class="btn btn-success"
+                onclick="goToToday()">
+            <i class="bi bi-calendar-day"></i>
+            Today
+        </button>
+
+    </div>
+
+</div>
+<div class="card p-4">
+
+    <table class="table table-bordered text-center align-middle">
+
+        <thead class="table-primary">
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+
+        <tbody id="calendarBody"></tbody>
+
+    </table>
+
+    <div class="legend mt-3">
+        <span class="badge bg-success">Appointments</span>
+        <span class="badge bg-danger">Filed Complaints</span>
+        <span class="badge bg-primary">Today</span>
+    </div>
+
+</div>
+<br>
+
+<div class="row">
+
+    <div class="col-lg-8">
+
+        <div class="card mb-4">
+            <div class="card-header bg-white">
+                <h5><i class="bi bi-person-lines-fill"></i> Resident Requests & Concerns</h5>
+            </div>
+
+            <div class="card-body" id="appointmentList">
+                <div class="empty-message">
+                    Select a date to view appointments.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-header bg-danger text-white">
+                <h5><i class="bi bi-exclamation-octagon-fill"></i> Logged Complaints for this Date</h5>
+            </div>
+
+            <div class="card-body" id="complaintsContainer">
+                <div class="empty-message">
+                    Select a date to view logged complaints.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card">
+
+            <div class="card-header bg-white">
+                <h5><i class="bi bi-info-circle"></i> Calendar Information</h5>
+            </div>
+
+            <div class="card-body">
+
+                <p><strong>Working Days</strong></p>
+                <p>Monday - Friday</p>
+
+                <hr>
+
+                <p><strong>Office Hours</strong></p>
+                <p>8:00 AM - 5:00 PM</p>
+
+                <hr>
+
+                <p><strong>Maximum Slots</strong></p>
+                <p>30 Appointments / Day</p>
+
+                <hr>
+
+                <div class="alert alert-info">
+                    Only approved appointments and submitted complaints are displayed on the calendar.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/calendar.js"></script>
+
+</body>
+</html>

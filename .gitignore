@@ -1,0 +1,23 @@
+# --- Databases ---
+*.sql
+*.sqlite
+*.db
+
+# --- C# / .NET / Visual Studio ---
+bin/
+obj/
+.vs/
+*.user
+*.suo
+appsettings.Development.json
+
+# --- Node.js / Frontend ---
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# --- Windows System Files ---
+Thumbs.db
+desktop.ini

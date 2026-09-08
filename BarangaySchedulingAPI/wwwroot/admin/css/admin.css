@@ -1,0 +1,273 @@
+/* =====================================
+   GLOBAL ADMIN LAYOUT
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f4f7fb;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+    color:#343a40;
+}
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:260px;
+    height:100vh;
+
+    background:#0d6efd;
+
+    color:white;
+
+    display:flex;
+    flex-direction:column;
+
+    z-index:1000;
+
+}
+
+.sidebar-header{
+
+    text-align:center;
+
+    padding:25px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar-header img{
+
+    width:85px;
+    height:85px;
+
+    border-radius:50%;
+
+    margin-bottom:12px;
+
+    background:white;
+    padding:4px;
+
+}
+
+.sidebar-header h4{
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.sidebar-header small{
+
+    opacity:.8;
+
+}
+
+.sidebar-menu{
+
+    padding:20px 0;
+
+    flex:1;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    height:55px;
+
+    padding:0 25px;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.25s;
+
+    font-size:16px;
+
+}
+
+.sidebar-menu a i{
+
+    width:30px;
+
+    font-size:19px;
+
+    margin-right:12px;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+.sidebar-menu a.active{
+
+    background:white;
+
+    color:#0d6efd;
+
+    border-left:5px solid #084298;
+
+    font-weight:600;
+
+}
+
+.logout{
+
+    display:flex;
+
+    align-items:center;
+
+    height:60px;
+
+    padding:0 25px;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+}
+
+.logout i{
+
+    width:30px;
+
+    margin-right:12px;
+
+}
+
+.logout:hover{
+
+    background:#dc3545;
+
+    color:white;
+
+}
+
+/* =====================================
+   CONTENT
+===================================== */
+
+.content{
+
+    margin-left:260px;
+
+    padding:30px;
+
+}
+
+/* =====================================
+   PAGE HEADER
+===================================== */
+
+.topbar{
+
+    background:white;
+
+    border-radius:18px;
+
+    min-height:115px;
+
+    padding:25px 30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.topbar h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.topbar p{
+
+    margin-top:8px;
+
+    margin-bottom:0;
+
+    color:#6c757d;
+
+}
+
+/* =====================================
+   CARDS
+===================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+/* =====================================
+   TABLES
+===================================== */
+
+.table th,
+.table td{
+
+    vertical-align:middle;
+
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.btn{
+
+    border-radius:10px;
+
+}
+
+/* =====================================
+   FORMS
+===================================== */
+
+.form-control,
+.form-select{
+
+    border-radius:10px;
+
+}
